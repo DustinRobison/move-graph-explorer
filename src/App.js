@@ -1,18 +1,28 @@
 import React from "react";
-import GraphiQL from "graphiql";
-import fetch from "isomorphic-fetch";
-import "graphiql/graphiql.css";
+import { useCookies } from "react-cookie";
 
-function App() {
-  const graphQlFetcher = params => {
-    return fetch(window.location.origin + "graphql", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(params)
-    }).then(response => response.json());
-  };
+import "./App.css";
+import Explorer from "./explorer/Explorer";
+import Session from "./session/Session";
 
-  return <GraphiQL fetcher={graphQlFetcher} />;
-}
+// TODO Features
+// Stylize page for Movemedical
+// Send posts with valid MOVE-SESSION-ID (allow users to login)
+
+const App = () => {
+  const [cookies] = useCookies();
+
+  return (
+    <div className={"App"}>
+      <div className={"AppContent"}>
+        <div className={"AppHeader"}>
+          <h3>Movemedical GraphQL API</h3>
+          <Session sessionId={cookies.V2_SESSION_ID} />
+        </div>
+        <Explorer sessionId={cookies.V2_SESSION_ID} />
+      </div>
+    </div>
+  );
+};
 
 export default App;
