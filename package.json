@@ -5,7 +5,7 @@
   "proxy": "https://dev.movemedical.com",
   "dependencies": {
     "es6-promise": "^4.2.8",
-    "graphiql": "^0.14.2",
+    "graphiql": "^1.4.7",
     "graphql": "^14.5.8",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.10.1",
